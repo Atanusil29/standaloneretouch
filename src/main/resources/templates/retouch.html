@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>ReTouch Framework 16.6.1</title>
+<link rel="stylesheet" th:href="@{/css/retouch.css}" />
+<script type="text/javascript" th:src="@{/js/jquery-1.11.1.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/retouch.js}"></script>
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery-ui.css}" />
+</head>
+
+<body style = "height:110vh">
+<div style = "height:10vh;width:70vh;" align="right"> <img th:src="@{/images/voorzorg.png}"/> </div>
+<div id="form" style = "height:50vh;width:70vh;">
+  <p id=form-prompt>Select a template to create the email body</p>
+  <div style="height:20px"></div> 
+  <input type="radio" id="Acupunctuur" name="template" value="Acupunctuur">
+  <label for="Acupunctuur">Acupunctuur</label><br>
+  <input type="radio" id="Alzheimerpatienten thuisoppas" name="template" value="Alzheimerpatienten thuisoppas">
+  <label for="Alzheimerpatienten">Alzheimerpatienten thuisoppas</label><br>
+  <input type="radio" id="Anticonceptie" name="template" value="Anticonceptie">
+  <label for="Anticonceptie">Anticonceptie</label><br>
+  <input type="radio" id="ziekenfonds" name="template" value="ziekenfonds">
+  <label for="ziekenfonds">Beter voordelen of hogere terugbetaling in andere ziekenfonds</label><br>
+  <input type="radio" id="federatie" name="template" value="federatie">
+  <label for="federatie">Betere voordelen of hogere terugbetaling in andere federatie</label><br>
+  <input type="radio" id="bijdrage" name="template" value="bijdrage">
+  <label for="bijdrage">Brillen en lenzen als de bijdrage OK is</label><br>
+  <input type="radio" id="lenzen" name="template" value="lenzen">
+  <label for="lenzen">Brillen enof lenzen voor het jaar 2022</label><br>
+  <div style="height:40px"></div> 
+  <button id="Generate" class="button" th:onclick="'generateDocument();'"  >Generate</button>
+</div>
+
+<div id="dialog-confirm" title="Interactive document generation" style="display:none;">
+  <h2>Channel selection</h2>
+  <fieldset>
+    <label for="channel">Select a channel to process : </label>
+    <select name="channel" id="channel">
+    	<option value="" data-class=""></option>
+      	<option value="PDF" data-class="PDF">Create local PDF file</option>
+      	<option value="EMAIL" data-class="EMAIL">Send email</option>
+      	<option value="SMS" data-class="SMS">SMS</option>
+    </select>
+  </fieldset>
+</div>
+<div id="dialog-confirm-submit-done" title="Interactive document generation" style="display:none;">
+  <p><span style="float:left; margin:12px 12px 20px 0;"></span>Create next email?</p>
+</div>
+<div id="spinner" class="spinner" style="display:none;">
+    <img id="img-spinner" th:src="@{/images/spinner.gif}" alt="Loading"/>
+</div>
+<div id="dialog-confirm-submit" title="Interactive document generation" style="display:none;">
+  <p><span style="float:left; margin:12px 12px 20px 0;"></span>Ready to send the email?</p>
+</div>
+<div id="dialog-confirm-channel-selection" title="Interactive document generation" style="display:none;">
+  <p><span style="float:left; margin:12px 12px 20px 0;"></span>Please select a delivery channel from the drop down</p>
+</div>
+<div id="dialog-confirm-sselection" title="Confirm selection" style="display:none;">
+  <p><span style="float:left; margin:12px 12px 20px 0;"></span>Please select at least one template to continue</p>
+</div>
+<div id="dialog-alert" title="Interactive document generation" style="display:none;">
+  <p><span style="float:left; margin:12px 12px 20px 0;"></span>Please select an email template</p>
+</div>
+
+<div id="dialog-iframe" style="display:none;" title="Interactive document generation" >
+     <iframe id="frame"  src="${data}"   width="1200" height="700">
+     </iframe>
+</div>
+<div id="demo-modal"></div>
+
+</body>
+</html>
