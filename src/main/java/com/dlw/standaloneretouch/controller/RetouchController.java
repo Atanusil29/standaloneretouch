@@ -42,6 +42,8 @@ public class RetouchController {
 			//Get OTDS token first
 	        System.out.println("#### Template is: "+RequestDTO.getRadTemplate());
 	        System.out.println("#### Channel is: "+RequestDTO.getChannel());
+	        System.out.println("#### Email address is: "+RequestDTO.getEmailAddress());
+	        System.out.println("#### Emil subject is: "+RequestDTO.getEmailSubject());
 	        String otdsUrl = environment.getProperty("otds.url");
 		    String otdsuserName = environment.getProperty("otds.otdsuserName");
 			String passWord = environment.getProperty("otds.userPassword");
@@ -59,7 +61,7 @@ public class RetouchController {
 			System.out.println("OTDS Access_Token:"+jsonObject.getString("ticket"));
 			
 			// get the XML data
-			String xmlcontent = com.dlw.action.getData.getSFXMLData(RequestDTO.getRadTemplate(), RequestDTO.getChannel());
+			String xmlcontent = com.dlw.action.getData.getSFXMLData(RequestDTO.getRadTemplate(), RequestDTO.getChannel(), RequestDTO.getEmailAddress(), RequestDTO.getEmailSubject() );
 			//Create the document
 			String getDocUrl = environment.getProperty("retouch.createDocument");
 			String themeId = environment.getProperty(RequestDTO.getRadTemplate());

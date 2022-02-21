@@ -4,6 +4,24 @@ public class RequestDTO {
 	
 	private String radTemplate;
 	private String channel;
+	private String emailAddress;
+	private String emailSubject;
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+
+	public String getEmailSubject() {
+		return emailSubject;
+	}
+
+	public void setEmailSubject(String emailSubject) {
+		this.emailSubject = emailSubject;
+	}
+
 	public String getChannel() {
 		return channel;
 	}
